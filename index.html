@@ -1,15 +1,314 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Title</title>
-        <link rel="stylesheet" href="styles.css" />
-        <script src="script.js"></script>
-    </head>
-    <body>
-        <h1 class="title">Hello World</h1>
-        <div id="mainDiv">Hello Div</div>
-        <br />
-        <button onclick="buttonClicked()">Click me</button>
-    </body>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta Estratégica CMDB: Del Riesgo a la Oportunidad</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #ef5675, #ffa600);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .kpi-card {
+            background-color: #003f5c;
+            color: white;
+            border-left: 5px solid #ffa600;
+        }
+        .flow-arrow {
+            content: '→';
+            font-size: 2rem;
+            color: #ffa600;
+            margin: 0 1rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-black text-[#003f5c] mb-4">Del Riesgo Operativo a la Ventaja Estratégica</h1>
+            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">Una propuesta visual para transformar nuestra gestión de configuración, mitigar riesgos y potenciar el negocio con una CMDB inteligente.</p>
+        </header>
+
+        <section class="mb-16">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-[#003f5c]">El Desafío: Una Cuestión de Perspectiva</h2>
+                <p class="text-gray-600 mt-2">Nuestra visión actual de los activos de TI está distorsionada. Contar "todo" nos ha llevado a una cifra inmanejable que oculta el verdadero valor y el riesgo. Es hora de cambiar el enfoque de la cantidad a la calidad.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-bold text-center text-[#bc5090] mb-4">Visión Actual: El Universo Transaccional</h3>
+                    <p class="text-7xl font-black text-center gradient-text">2,793,887</p>
+                    <p class="text-center text-gray-500 mt-2">"Activos" contados, incluyendo millones de eventos de bajo nivel como jobs de respaldo diarios.</p>
+                    <p class="mt-4 text-center text-sm">Este enfoque infla los costos, dificulta la gestión y nos hace operar a ciegas, reaccionando a problemas en lugar de prevenirlos.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-[#ffa600]">
+                    <h3 class="text-xl font-bold text-center text-[#003f5c] mb-4">Visión Propuesta: El Universo Estratégico</h3>
+                    <p class="text-7xl font-black text-center text-[#003f5c]">~73,000</p>
+                    <p class="text-center text-gray-500 mt-2">Elementos de Configuración (CIs) que realmente requieren gobierno y control.</p>
+                    <p class="mt-4 text-center text-sm">Nos enfocamos en lo que importa: políticas, servicios y componentes críticos cuyo cambio impacta directamente al negocio y a nuestros clientes.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-[#003f5c]">El Costo Real de la Desconexión</h2>
+                <p class="text-gray-600 mt-2">Los problemas no son teóricos. Incidentes reales, surgidos de nuestra falta de visibilidad, han generado riesgos de seguridad y consumido valiosas horas de ingeniería.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-2xl font-bold text-[#003f5c] mb-4">Caso 1: La IP "Tóxica" ☣️</h3>
+                    <p class="mb-4">Una dirección IP pública fue reasignada sin conocer su historial. El resultado: ataques de seguridad inmediatos contra un nuevo cliente.</p>
+                    <div class="flex flex-col md:flex-row justify-around items-center text-center space-y-4 md:space-y-0">
+                        <div class="flex flex-col items-center">
+                            <div class="text-4xl mb-2">🏢</div>
+                            <p class="font-semibold">IP asignada a entidad de alto perfil</p>
+                        </div>
+                        <div class="text-4xl font-bold text-[#ffa600] transform rotate-90 md:rotate-0">→</div>
+                        <div class="flex flex-col items-center">
+                            <div class="text-4xl mb-2">💼</div>
+                            <p class="font-semibold">IP reasignada a nuestro cliente</p>
+                        </div>
+                        <div class="text-4xl font-bold text-[#ef5675] transform rotate-90 md:rotate-0">→</div>
+                        <div class="flex flex-col items-center">
+                            <div class="text-4xl mb-2">🛡️💥</div>
+                            <p class="font-semibold">Ataques de seguridad inmediatos</p>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-sm text-red-700 font-semibold text-center">Causa Raíz: Tratar la IP como un recurso intercambiable, no como un CI con un ciclo de vida y un historial de riesgo.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-2xl font-bold text-[#003f5c] mb-4">Caso 2: Los Activos "Fantasma" 👻</h3>
+                    <p class="mb-4">Portales web obsoletos, olvidados pero aún operativos, fueron identificados por un cliente como vulnerabilidades de seguridad.</p>
+                     <div class="bg-gray-50 p-4 rounded-lg">
+                        <p class="font-semibold text-gray-700">"Producto de la desidia o la nostalgia..."</p>
+                        <p class="text-sm text-gray-500">- Cita de la reunión de operaciones.</p>
+                    </div>
+                    <p class="mt-4 font-semibold text-center">Esto no es nostalgia, es una falla de gobernanza. Cada activo sin propietario es una puerta trasera potencial.</p>
+                    <p class="mt-2 text-sm text-red-700 font-semibold text-center">Causa Raíz: Ausencia de un proceso de gestión del ciclo de vida del activo, desde su creación hasta su retiro seguro.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 bg-white rounded-lg shadow-lg p-6 md:p-8">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-[#003f5c]">La Solución: Adoptar un Lenguaje Común (ITIL 4)</h2>
+                <p class="text-gray-600 mt-2 max-w-3xl mx-auto">Para resolver el problema, debemos diferenciar entre la visión financiera y la operativa. No todo lo que gestionamos tiene un valor en libros, pero sí un impacto directo en el servicio.</p>
+            </div>
+            <div class="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-8">
+                <div class="text-center p-6 border-2 border-dashed border-[#7a5195] rounded-lg max-w-sm">
+                    <h4 class="text-xl font-bold text-[#7a5195]">Activo Fijo de TI</h4>
+                    <p class="text-sm mt-2">Cualquier componente con **valor financiero**. Su gestión se centra en el costo, la depreciación y la propiedad.</p>
+                    <p class="mt-2 font-semibold text-xs">Pregunta clave: ¿Cuánto cuesta?</p>
+                </div>
+                <div class="text-center p-6 border-2 border-solid border-[#003f5c] rounded-lg max-w-sm bg-blue-50">
+                    <h4 class="text-xl font-bold text-[#003f5c]">Elemento de Configuración (CI)</h4>
+                    <p class="text-sm mt-2">Cualquier componente que debe ser gestionado para **entregar un servicio**. Su gestión se centra en las relaciones, el estado y el impacto operativo.</p>
+                    <p class="mt-2 font-semibold text-xs">Pregunta clave: ¿Qué pasa si lo cambio?</p>
+                </div>
+            </div>
+            <div class="mt-8 text-center bg-[#003f5c] text-white p-4 rounded-lg max-w-2xl mx-auto">
+                <p class="font-bold text-lg">Principio Fundamental:</p>
+                <p>"Todo Activo Fijo de TI es un CI, pero no todo CI es un Activo Fijo."</p>
+                <p class="text-sm mt-2">(Ej: Un servidor es ambos. Una política de firewall es solo un CI).</p>
+            </div>
+        </section>
+        
+        <section class="mb-16">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-[#003f5c]">Nuestro Nuevo Universo Gestionable</h2>
+                <p class="text-gray-600 mt-2">Al aplicar una definición estratégica de CI, el panorama cambia drásticamente. Así se distribuyen los ~73,000 CIs que realmente debemos gobernar.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <div class="chart-container h-96 md:h-[500px] max-h-[500px]">
+                    <canvas id="correctedCiChart"></canvas>
+                </div>
+                <p class="text-sm text-center text-gray-500 mt-4">Esta visión nos permite enfocar nuestros recursos, automatizar el control y tomar decisiones basadas en datos precisos sobre el impacto en el servicio.</p>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-[#003f5c]">Nuestra Estrategia: Ágil, Interna y Evolutiva</h2>
+                <p class="text-gray-600 mt-2">No buscaremos una solución perfecta en años. Proponemos un enfoque práctico para entregar valor desde el primer día, utilizando nuestra plataforma interna "Da Vinci".</p>
+            </div>
+            <div class="flex flex-col md:flex-row justify-center items-center text-center">
+                <div class="flex-1 p-4">
+                    <div class="p-6 bg-white rounded-lg shadow-lg h-full">
+                        <div class="text-4xl mb-2">📍</div>
+                        <h3 class="text-xl font-bold text-[#003f5c]">1. Empezar donde se está</h3>
+                        <p class="mt-2 text-sm">Iniciaremos con un piloto controlado en un cliente mediano, utilizando datos y procesos existentes como base para mejorar, no para reemplazar.</p>
+                    </div>
+                </div>
+                <div class="flow-arrow hidden md:block"></div>
+                <div class="flex-1 p-4">
+                    <div class="p-6 bg-white rounded-lg shadow-lg h-full">
+                        <div class="text-4xl mb-2">🔄</div>
+                        <h3 class="text-xl font-bold text-[#003f5c]">2. Progresar Iterativamente</h3>
+                        <p class="mt-2 text-sm">Lanzaremos un Producto Mínimo Viable (MVP) y lo mejoraremos en ciclos cortos, incorporando la retroalimentación directa del equipo de operaciones.</p>
+                    </div>
+                </div>
+                <div class="flow-arrow hidden md:block"></div>
+                <div class="flex-1 p-4">
+                    <div class="p-6 bg-white rounded-lg shadow-lg h-full">
+                        <div class="text-4xl mb-2">🎯</div>
+                        <h3 class="text-xl font-bold text-[#003f5c]">3. Mantenerlo Simple y Práctico</h3>
+                        <p class="mt-2 text-sm">"Lo perfecto es enemigo de lo bueno". Nuestro objetivo es entregar valor de negocio tangible de forma rápida y continua.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center pt-8 border-t-2 border-[#ffa600]">
+            <h2 class="text-3xl font-black text-[#003f5c]">El Beneficio es para Todos</h2>
+            <p class="text-gray-600 mt-2 mb-8 max-w-3xl mx-auto">Una CMDB robusta no es una herramienta de TI; es una capacidad de negocio que genera valor en toda la organización.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="kpi-card p-4 rounded-lg shadow-md">
+                    <h4 class="font-bold text-lg">Finanzas y Compras</h4>
+                    <p class="text-sm text-gray-200">Optimización de licencias, control de activos y base para la contabilidad de costos.</p>
+                </div>
+                <div class="kpi-card p-4 rounded-lg shadow-md">
+                    <h4 class="font-bold text-lg">Comercial y Clientes</h4>
+                    <p class="text-sm text-gray-200">Mayor fiabilidad del servicio, resolución de incidentes más rápida y confianza en la venta.</p>
+                </div>
+                <div class="kpi-card p-4 rounded-lg shadow-md">
+                    <h4 class="font-bold text-lg">Legal y Cumplimiento</h4>
+                    <p class="text-sm text-gray-200">Trazabilidad para auditorías, gestión de riesgos de seguridad y gobierno de datos.</p>
+                </div>
+                <div class="kpi-card p-4 rounded-lg shadow-md">
+                    <h4 class="font-bold text-lg">Marca y Talento</h4>
+                    <p class="text-sm text-gray-200">Protección de la reputación y creación de un entorno operativo maduro que atrae talento.</p>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        const wrapLabel = (label, maxLength = 16) => {
+            if (typeof label !== 'string' || label.length <= maxLength) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + ' ' + word).trim().length > maxLength) {
+                    lines.push(currentLine.trim());
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            });
+            if (currentLine) {
+                lines.push(currentLine.trim());
+            }
+            return lines;
+        };
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+
+        const correctedCiData = {
+            labels: ['Network', 'Cyber', 'Cloud', 'Manage Services', 'Plataforma', 'Aplicaciones'].map(label => wrapLabel(label)),
+            datasets: [{
+                label: 'CIs Estratégicos',
+                data: [25000, 17000, 12923, 7164, 6000, 5256],
+                backgroundColor: [
+                    '#003f5c',
+                    '#374c80',
+                    '#7a5195',
+                    '#bc5090',
+                    '#ef5675',
+                    '#ffa600',
+                ],
+                borderColor: '#ffffff',
+                borderWidth: 2
+            }]
+        };
+
+        const correctedCiChartCtx = document.getElementById('correctedCiChart').getContext('2d');
+        new Chart(correctedCiChartCtx, {
+            type: 'bar',
+            data: correctedCiData,
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#e0e0e0'
+                        },
+                        ticks: {
+                            color: '#333'
+                        }
+                    },
+                    y: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#333'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Distribución de CIs Estratégicos por Vertical',
+                        font: {
+                            size: 18,
+                            weight: 'bold'
+                        },
+                        color: '#003f5c',
+                        padding: {
+                            bottom: 20
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
 </html>
